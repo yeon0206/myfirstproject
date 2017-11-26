@@ -142,3 +142,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+LOGIN_REDIRECT_URL = '/accounts/profile' #login함수에 resolve_url(settings.LOGIN_REDIRECT_URL)
