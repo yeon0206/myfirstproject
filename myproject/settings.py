@@ -120,7 +120,25 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
+#Static Files 개발 리소스로서의 정적인 파일(js,css,image, etc)
+#1)AppDirectoriesFinder(앱단위로 저장/서빙)
 STATIC_URL = '/static/'
+#2)FileSystemFinder(프로젝트 단위로 저장/서빙)
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'myproject', 'static'),
+    os.path.join(BASE_DIR, 'bower_components'),
+]
+
+# **************
+#3)각 디렉토리 별로 나눠져있는 static파일들을 manage.py collectstatic명령을 통해, 아래 디렉토리 경로로 복사
+#개발당시에는 의미없음, 실서비스 배포 전에 static파일을 모아서 배포 서버에 복사
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+#4)settings.STATIC_ROOT 경로에 모아진 파일을 배포서버로 복사
+#5)settings.STATIC_URL 설정이 배포서버를 가르키도록 수정
+#6)실서비스 static 서빙 웹서버 설정(nginx/apache/S3/CDN 등)
+
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
